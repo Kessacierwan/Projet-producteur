@@ -1,0 +1,46 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/panier.css">
+    		<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
+{% block main %}
+    <h1 class="cart-title">Votre panier</h1>
+            <div class="cart-container">
+
+    {% if commandes is empty %}
+        <p class="cart-empty">Votre panier est vide</p>
+    {% else %}
+            {% for commande in commandes %}
+                {% for produitDansCommande in commande.produitsDansCommande %}
+                    <div class="cart-item" id="panier-contenu">
+                        <h3 class="cart-item-title">{{ produitDansCommande.produit.nom }}</h3>
+                        <p class="cart-item-quantity">Quantité : {{ produitDansCommande.quantite }}</p>
+                        <p class="cart-item-status">Statut : {{ commande.statue }}</p>
+                        <p class="cart-item-status">Prix unitaire : {{ (produitDansCommande.total / produitDansCommande.quantite) | number_format(2, ',', ' ') }}€</p>
+                        <p class="cart-item-total">Total : {{ produitDansCommande.total | number_format(2, ',', ' ') }}€</p>
+                        <a href="/deleteProductFromPanier/{{ produitDansCommande.id }}" class="cart-item-delete">Supprimer produit</a>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <h2 class="cart-total">Total du panier : {{ montantTotal | number_format(2, ',', ' ') }}€</h2>
+
+        <form id="payment-form" class="payment-form" method="POST"> 
+            <div id="card-element" class="card-element"></div>
+            <div id="card-errors" class="card-errors" role="alert"></div>
+            <button id="submit-payment" class="submit-payment">Payer maintenant</button>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+    var stripePublicKey = '{{ stripePublicKey }}';
+        var montantTotal = {{ montantTotal }};
+    </script>
+    <script src="/js/payment.js"></script>
+{% endblock %}

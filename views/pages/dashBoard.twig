@@ -1,0 +1,98 @@
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/dashBoard.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+			<link rel="stylesheet" href="/assets/css/globals.css">
+
+	<style></style>
+{% endblock %}
+
+{% block main %}
+	<div
+		class="container">
+		{# vue client  #}
+		{% if client is defined and client is not null %}
+			<h1 class="welcome-header">
+				Bienvenue :
+				<div class="client-name">{{ client.prenom }}
+					{{ client.nom }}</div>
+			</h1>
+
+			<!-- Carte ici -->
+			<div class="mapSelectorContainer">
+				<div class="mapSelectors">
+					<label for="distance">Distance maximale (km) :</label>
+					<select id="distance">
+						<option value="1">1 km</option>
+						<option value="5">5 km</option>
+						<option value="10">10 km</option>
+						<option value="20">20 km</option>
+						<option value="50">50 km</option>
+						<option value="500">500 km</option>6
+
+					</select>
+				</div>
+				<div class="preferenceSelector">
+					<label for="preference">Agriculture biologique :</label>
+					<select id="preference">
+						<option value="oui">Oui</option>
+						<option value="non">Non</option>
+						<option value="indifferent" selected>Indifférent</option>
+					</select>
+				</div>
+			</div>
+			<div id="map" class="map"></div>
+
+
+			{# vue producteur  #}
+		{% elseif producteur is defined and producteur is not null %}
+			<div class="prod-container">
+				<h2 class="prod-welcome-header">
+					<span class="prod-name">{{ producteur.entrepriseNom }}</span>
+				</h2>
+<a href="/manageProduct" class="testButton" style="text-decoration: none;">Gérer mes produits</a>
+<br>
+<a href="/CreateStripeProducteur" class="testButton" style="text-decoration: none;">Créer un compte stripe</a>
+<br>
+
+<a href="/uploadCsv" class="testButton" style="text-decoration: none;">Importer via CSV</a>
+
+				<p class="prod-list-title">Mes produits</p>
+
+				<div class="prod-product-list">
+
+					{% for produit in produits %}
+						<div class="prod-product-item">
+							<ul class="prod-product-details">
+								<li class="prod-product-name">
+									{{ produit.nom }}</li>
+								<li class="prod-product-price">Prix :
+									{{ produit.prix }}
+									€</li>
+								<li class="prod-product-quantity">Quantité :
+									{{ produit.quantite }}
+									Kg</li>
+								<li class="prod-product-details">Details :
+									{{ produit.details }}</li>
+							</ul>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% else %}
+			<h1 class="prod-no-session-header">
+				Aucune session active.
+			</h1>
+		{% endif %}
+	</div>
+{% endblock %}
+
+
+{% block script %}
+	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+	<script>
+		const producteurs = {{ producteurs|json_encode|raw }};
+	</script>
+	<script src="/js/map.js"></script>
+{% endblock %}

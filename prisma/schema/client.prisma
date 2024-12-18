@@ -1,0 +1,13 @@
+model Client {
+    id               Int        @id @default(autoincrement())
+    nom              String
+    prenom           String
+    email            String     @unique
+    motDePasse       String
+    age              Int
+    sexe             String
+    stripeCustomerId String?    @unique
+    isActive         Boolean    @default(false)
+    
+    commandes        Commande[]
+}

@@ -1,0 +1,72 @@
+{% extends "../layouts/base.twig" %}
+
+{% block title %}
+	<title>Inscription Client</title>
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/addClient.css">
+	<link rel="stylesheet" href="/assets/css/globals.css">
+
+
+{% endblock %}
+
+{% block main %}
+	<main class="mainInscriptionClient">
+		<div class="containerInscriptionClient">
+			<h2 class="titleInscriptionClient">Inscription client</h2>
+			<div class="divPourDisplayFormInscriptionClient">
+				<div>
+				<section>
+					<form action="/addClient" method="post" class="formInscriptionClient">
+						<div class="formGroupInscriptionClient">
+							<label for="nom" class="labelInscriptionClient">Nom</label>
+							<input type="text" name="nom" id="nom" class="inputInscriptionClient" pattern="^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$" title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés.">
+						</div>
+
+						<div class="formGroupInscriptionClient">
+							<label for="prenom" class="labelInscriptionClient">Prénom</label>
+							<input type="text" name="prenom" id="prenom" class="inputInscriptionClient" pattern="^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$" title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés.">
+						</div>
+
+						<div class="formGroupInscriptionClient">
+							<label for="email" class="labelInscriptionClient">Mail</label>
+							<input type="mail" name="email" id="email" class="inputInscriptionClient" pattern="^[A-Za-zÀ-ÿ0-9,&\.\@\:\-#\?\/!\(\)']+$" title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés.">
+						</div>
+
+						<div class="formGroupInscriptionClient">
+							<label for="motDePasse" class="labelInscriptionClient">Mot de passe</label>
+							<input type="password" name="motDePasse" id="motDePasse" class="inputInscriptionClient" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*\-_²]).{8,}$" required>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div>
+						<div class="formGroupInscriptionClient">
+							<label for="confirm_motDePasse" class="labelInscriptionClient">Confirmez le mot de passe</label>
+							<input type="password" name="confirm_motDePasse" id="confirm_motDePasse" class="inputInscriptionClient">
+						</div>
+
+						<div class="formGroupInscriptionClient">
+							<label for="age" class="labelInscriptionClient">Âge</label><br>
+							<input type="text" name="age" id="age" class="inputInscriptionClient" pattern="[0-9]">
+						</div>
+
+						<div class="formGroupInscriptionClient">
+							<label for="sexe" class="labelInscriptionClient">Sexe</label><br>
+							<input type="text" name="sexe" id="sexe" class="inputInscriptionClient">
+						</div>
+					</div>
+				</div>
+			</section>
+				<button type="submit" class="testButton">Envoyer</button>
+			</form>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+
+	<script src="/js/regex.js"></script>
+
+{% endblock %}

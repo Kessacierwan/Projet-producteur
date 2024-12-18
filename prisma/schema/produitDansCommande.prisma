@@ -1,0 +1,13 @@
+
+
+model ProduitDansCommande {
+    id       Int     @id @default(autoincrement())
+    quantite Int
+    total    Decimal @db.Decimal(10, 2)
+
+    idCommande Int
+    commande   Commande @relation(fields: [idCommande], references: [id])
+
+    idProduit Int
+    produit   Produit @relation(fields: [idProduit], references: [id])
+}

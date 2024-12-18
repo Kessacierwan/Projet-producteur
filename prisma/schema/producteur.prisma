@@ -1,0 +1,16 @@
+model Producteur {
+    id              Int     @id @default(autoincrement())
+    entrepriseNom   String
+    nom             String
+    prenom          String
+    email           String  @unique
+    motDePasse      String
+    age             Int
+    sexe            String
+    adresse         String
+    siret           String @unique
+    bio             String?
+    stripeAccountId String? //gestion de stripe//
+
+    produits Produit[] @relation("ProduitProducteur")
+}

@@ -1,0 +1,42 @@
+{% extends "../layouts/base.twig" %}
+
+{% block title %}
+	<title>LoginClient</title>
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/loginClient.css">
+		<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
+{% block main %}
+	<main class="mainLoginClient">
+		<section>
+			<div>
+				<h2 class="secondTitleLoginClient">Connexion client</h2>
+			</div>
+			<div>
+				<form action="/loginClient" method="post" class="formLoginClient">
+					<div>
+						<label for="email" class="labelLoginClient">Votre mail</label><br>
+						<input type="email" class="inputLoginClient" name="email">
+						{% if error %}
+							{{error.email}}
+						{% endif %}
+					</div>
+					<div>
+						<label for="motDePasse"  class="labelLoginClient">Votre mot de passe</label><br>
+						<input type="password"  class="inputLoginClient"  name="motDePasse">
+						{% if error %}
+							{{error.motDePasse}}
+						{% endif %}
+					</div>
+					<div class="loginClientButtonContainer">
+						<button type="submit" class="testButton">Se connecter</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+{% endblock %}

@@ -1,0 +1,12 @@
+model Produit {
+    id       Int    @id @default(autoincrement())
+    nom      String
+    prix     Decimal @db.Decimal(5, 2)
+    quantite Decimal @db.Decimal(5,2)
+    details String ? 
+
+    producteurs Producteur[] @relation("ProduitProducteur")
+
+    produitsDansCommande ProduitDansCommande[]
+
+}

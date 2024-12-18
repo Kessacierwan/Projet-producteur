@@ -1,0 +1,240 @@
+#map {
+    height: 500px;
+    /* Hauteur de la carte */
+    width: 60%;
+    /* Largeur de la carte */
+    margin: 0 auto;
+    /* Centre la carte horizontalement */
+}
+    .producteurs-container {
+margin-top: 20px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+
+.producteur-item {
+background-color: #f0f0f0;
+border-radius: 8px;
+padding: 15px;
+margin: 10px;
+width: calc(33% - 20px);
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.producteur-item h3 {
+margin-top: 0;
+color: #333;
+}
+
+.producteur-item p {
+margin: 5px 0;
+color: #666;
+}
+
+.prod-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+background-image: url(../img/serres_pays-bas.jpg);
+    color: #333;
+}
+
+.prod-welcome-header {
+    font-size: 2.5em;
+    color: #222;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.prod-name {
+    font-weight: bold;
+    color: #444;
+}
+
+.prod-manage-button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.prod-manage-button:hover {
+    background-color: #555;
+}
+
+.prod-product-list {
+    background: rgba(128, 128, 128, 0.7);
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.prod-list-title {
+    font-size: 1.2em;
+    color: #444;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+}
+
+.prod-product-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid black;
+    background: rgba(173, 173, 173, 0.7);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.prod-product-item:hover {
+    transform: translateY(-5px);
+}
+
+.prod-product-details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.prod-product-details li {
+    margin-bottom: 5px;
+}
+
+.prod-product-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.prod-product-price, .prod-product-quantity {
+    color: #666;
+}
+
+.prod-no-session-header {
+    font-size: 2em;
+    color: #d32f2f;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+    .prod-product-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .prod-product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+#map {
+    height: 500px;
+    /* Hauteur de la carte */
+    width: 60%;
+    /* Largeur de la carte */
+    margin: 0 auto;
+    /* Centre la carte horizontalement */
+}
+.container{
+    background-image: url(../img/cagettes.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+}
+.producteurs-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.producteur-item {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: calc(33% - 20px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producteur-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.producteur-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.mapSelectorContainer {
+    display: flex;
+    max-width: 60%;
+    margin: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff9b3;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mapSelectors, .preferenceSelector {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin-right: 10px;
+}
+
+select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:hover {
+    border-color: #aaa;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Style pour les options du select */
+select option {
+    padding: 8px;
+}
+
+/* Media query pour la responsivité */
+@media (max-width: 600px) {
+    .mapSelectorContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mapSelectors, .preferenceSelector {
+        margin-bottom: 10px;
+    }
+}

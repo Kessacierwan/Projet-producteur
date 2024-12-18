@@ -1,0 +1,76 @@
+
+
+.mainLoginClient {
+    background: rgba(128, 128, 128, 0.3);
+    padding: 20px; /* Espacement interne */
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    width: 300px; /* Largeur fixe du formulaire */
+    position: absolute; /* Positionnement absolu */
+    top: 50%; /* Positionne le haut à 50% de la hauteur de la fenêtre */
+    left: 50%; /* Positionne la gauche à 50% de la largeur de la fenêtre */
+    transform: translate(-50%, -50%); /* Centrage de l'élément */
+}
+
+
+
+
+.loginClientButtonContainer {
+    display: flex; /* Utilise le modèle flex pour centrer le bouton */
+    justify-content: center; /* Centre horizontalement */
+    margin-top: 20px; /* Ajoute un espacement au-dessus du bouton */
+}
+
+
+.secondTitleLoginClient {
+    text-align: center;
+    /* Centre le titre */
+    color: rgb(0, 0, 0);
+}
+
+.formLoginClient {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.labelLoginClient {
+    margin: auto;
+    /* Espacement autour des labels */
+    color: rgb(0, 0, 0);
+
+}
+
+.inputLoginClient{
+    padding: 10px;
+    /* Espacement interne des champs de saisie */
+    border: 2px solid #000000;
+    /* Bordure légère */
+    border-radius: 4px;
+    /* Coins arrondis */
+    margin-bottom: 15px;
+    /* Espacement en bas */
+    background-color: rgb(242, 253, 225);
+    caret-color: white; /* Couleur du curseur d'écriture */
+min-width: 100%;
+
+}
+
+
+
+.error {
+    color: red;
+    /* Couleur des messages d'erreur */
+    font-size: 0.9em;
+    /* Taille de police plus petite */
+}
+
+
+
+.inputLoginClient:focus {
+    outline: none; /* Supprime le contour par défaut du navigateur */
+    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement plus clair quand sélectionné */
+    color: white; /* Garde le texte en blanc même quand sélectionné */
+}

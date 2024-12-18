@@ -1,0 +1,72 @@
+{% extends "../layouts/base.twig" %}
+
+{% block title %}
+	<title>
+		{% if produit %}Modifier Produit{% else %}Ajouter Produit
+		{% endif %}
+	</title>
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="assets/css/manageProduct.css">
+			<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
+{% block main %}
+	<main class="mp-container">
+		<div class="mp-form-section">
+			<h2 class="mp-form-title">
+				{% if produit %}Modifier Produit{% else %}Ajouter Produit
+				{% endif %}
+			</h2>
+
+			<form class="mp-product-form" action="{% if produit %}/modifyProduct/{{ produit.id }}{% else %}/addProduct{% endif %}" method="post">
+				<div class="mp-form-group">
+					<label for="nom" class="mp-form-label">Nom</label>
+					<input type="text" name="nom" id="nom" class="mp-form-input" value="{{ produit is defined ? produit.nom : '' }}">
+				</div>
+				<div class="mp-form-group">
+					<label for="prix" class="mp-form-label">Prix au KiloGramme</label>
+					<input type="number" name="prix" id="prix" class="mp-form-input" step="0.01" min="0" value="{{ produit is defined ? produit.prix : '' }}">
+				</div>
+				<div class="mp-form-group">
+					<label for="quantite" class="mp-form-label">Quantité en KiloGramme</label>
+					<input type="number" name="quantite" id="quantite" class="mp-form-input" value="{{ produit is defined ? produit.quantite : '' }}">
+				</div>
+
+				<div class="mp-form-group">
+					<label for="details" class="mp-form-label">details du produit</label>
+					<input type="string" placeholder="Provenance, pesticides, bio?" name="details" id="details" class="mp-form-input" value="{{ produit is defined ? produit.details : '' }}">
+				</div>
+
+				<button class="mp-submit-button">Ajouter</button>
+			</form>
+		</div>
+		<h3 class="mp-list-title">Produits du producteur</h3>
+
+		<div class="mp-product-list">
+
+			{% for produit in produits %}
+				<div class="mp-product-item">
+					<ul class="mp-product-details">
+						<li class="mp-product-name">Nom :
+							{{ produit.nom }}</li>
+						<li class="mp-product-price">Prix :
+							{{ produit.prix }}
+							€</li>
+						<li class="mp-product-quantity">Quantité :
+							{{ produit.quantite }}</li>
+						<li class="prod-product-details">Details :
+							{{ produit.details }}</li>
+
+					</ul>
+					<div class="mp-product-actions">
+						<a href="/deleteProduct/{{ produit.id }}" class="mp-delete-button">Supprimer produit</a>
+						<a href="/modifyProduct/{{ produit.id }}" class="mp-modify-button">Modifier produit</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}

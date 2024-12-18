@@ -1,0 +1,87 @@
+{# panier.twig #}
+{% extends "../layouts/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/accueil.css">
+		<link rel="stylesheet" href="/assets/css/globals.css">
+
+
+{% endblock %}
+{% block main %}
+	<section class="accueil-video-section" id="video-fond">
+		<div class="accueil-video-container">
+			<video autoplay loop muted class="accueil-background-video">
+				<source src="/assets/img/2016731-hd_1920_1080_30fps.mp4" type="video/mp4">
+				Votre navigateur ne supporte pas la balise video.
+			</video>
+		</div>
+		<div class="accueil-content-overlay">
+			<h2 class="accueil-title">Trouver un producteur près de chez vous</h2>
+			<div class="divPourDisplayCarlos">
+				<div class="divCoucou">
+					<p style="font-size : 25px">Consommez
+					</p>
+				</div>
+				<div class="animation">
+					<div class="first">
+						<div  style="font-size : 25px">Local</div>
+					</div>
+					<div class="second">
+						<div  style="font-size : 25px">Durable</div>
+					</div>
+					<div class="third">
+						<div  style="font-size : 25px">Sain</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="enjeux-section">
+		<div class="enjeu-item" id="enjeuxEnvironnementaux">
+			<h3 class="enjeu-title">Enjeux environnementaux</h3>
+			<p class="enjeu-description">
+			</p>
+			<div class="enjeu-overlay">
+				<span class="enjeu-overlay-text">				Permettre de produire des produits de qualité en respect de l'environnement.
+</span>
+			</div>
+		</div>
+
+		<div class="enjeu-item" id="enjeuxFinancier">
+			<h3 class="enjeu-title">Enjeux financiers</h3>
+			<p class="enjeu-description">
+			</p>
+			<div class="enjeu-overlay">
+				<span class="enjeu-overlay-text">				Permettre une rémunération plus juste des agriculteurs
+</span>
+			</div>
+		</div>
+
+		<div class="enjeu-item" id="enjeuxPolitique">
+			<h3 class="enjeu-title">Enjeux politiques</h3>
+			<p class="enjeu-description">
+				
+			</p>
+			<div class="enjeu-overlay">
+				<span class="enjeu-overlay-text">Réduire la dépendance de la France vis-à-vis des autres pays. 
+								            Ne plus indexer le prix des produits sur celui des autres pays.</span>
+			</div>
+		</div>
+
+		<div class="enjeu-item" id="enjeuxSociaux">
+			<h3 class="enjeu-title">Enjeux sociaux</h3>
+			<p class="enjeu-description">
+				
+			</p>
+			<div class="enjeu-overlay">
+				<span class="enjeu-overlay-text">Valoriser le circuit court permet de réduire le risque sanitaire lié au stockage, rappel de produits etc., et avoir une 
+								            traçabilité simple. 
+								            
+								            Problème de gaspillage alimentaire.</span>
+			</div>
+		</div>
+	</section>
+{% endblock %}

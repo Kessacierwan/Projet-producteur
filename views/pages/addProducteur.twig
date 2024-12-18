@@ -1,0 +1,115 @@
+{% extends "../layouts/base.twig" %}
+
+{% block title %}
+	<title>Inscription Producteur</title>
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/addProducteur.css">
+		<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
+{% block main %}
+	<main class="mainInscriptionProducteur">
+		<div class="containerInscriptionProducteur">
+			<h2 class="titleInscriptionProducteur">Inscription producteur</h2>
+
+			<form action="/addProducteur" method="post" class="formInscriptionProducteur">
+				<div class="divPourDisplayFormProducteur">
+					<div>
+						<div class="formGroupInscriptionProducteur">
+							<label for="entrepriseNom" class="labelInscriptionProducteur">Nom de l'entreprise</label><br>
+							<input type="text" name="entrepriseNom" id="entrepriseNom" 
+       pattern="^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$" 
+ title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés." 
+							class="inputInscriptionProducteur">
+						</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="nom" class="labelInscriptionProducteur">Nom</label><br>
+							<input type="text" name="nom" id="nom" class="inputInscriptionProducteur"
+							       pattern="^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$" 
+ title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés." >
+						</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="prenom" class="labelInscriptionProducteur">Prénom</label><br>
+							<input type="text" name="prenom" id="prenom" class="inputInscriptionProducteur"
+							       pattern="^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$" 
+ title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés." >
+						</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="email" class="labelInscriptionProducteur">Mail</label><br>
+							<input type="mail" name="email" id="email" class="inputInscriptionProducteur"
+							       pattern="^[A-Za-zÀ-ÿ0-9,&\.\@\:\-#\?\/!\(\)']+$" 
+ title="Seules les lettres (y compris accentuées), les chiffres, et les caractères , & . : - # ? / ! ( ) ' sont autorisés." >
+						</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="motDePasse" class="labelInscriptionProducteur">Mot de passe</label><br>
+							<input type="password" name="motDePasse" id="motDePasse" class="inputInscriptionProducteur">
+						</div>
+					</div>
+					<div>
+						<div class="formGroupInscriptionProducteur">
+							<label for="confirm_motDePasse" class="labelInscriptionProducteur">Confirmez le mot de passe</label><br>
+							<input type="password" name="confirm_motDePasse" id="confirm_motDePasse" class="inputInscriptionProducteur">
+						</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="age" class="labelInscriptionProducteur">Age</label><br>
+							<input type="number" name="age" id="age" class="inputInscriptionProducteur"
+														         pattern="[0-9]" 
+>
+						</div>
+
+<div class="formGroupInscriptionProducteur">
+    <label for="sexe" class="labelInscriptionProducteur">Sexe</label><br>
+    <select name="sexe" id="sexe" class="inputInscriptionProducteur" required>
+        <option class="optionValueZero"value="" disabled selected>Sélectionnez votre sexe</option>
+        <option value="homme">Homme</option>
+        <option value="femme">Femme</option>
+    </select>
+</div>
+
+<div class="formGroupInscriptionProducteur">
+    <label for="adresse" class="labelInscriptionProducteur">Adresse</label><br>
+    <input type="text" name="adresse" id="adresse" class="inputInscriptionProducteur"
+           pattern="[A-Za-z0-9\s]+"  maxlength="100" required>
+</div>
+
+						<div class="formGroupInscriptionProducteur">
+							<label for="siret" class="labelInscriptionProducteur">SIRET</label><br>
+							<input type="text" name="siret" id="siret" class="inputInscriptionProducteur"
+							         pattern="[0-9]{14}" 
+									 title = "Le siret doit contenir 14 Chiffres."
+									 minlength="14" maxlength="14" required>
+
+						</div>
+
+                        
+	
+<div class="formGroupInscriptionProducteur">
+    <label for="bio" class="labelInscriptionProducteur">Bio</label><br>
+    <select name="bio" id="bio" class="inputInscriptionProducteur">
+        <option value="indifferent" selected>Indifférent</option>
+        <option value="oui">Oui</option>
+        <option value="non">Non</option>
+    </select>
+</div>
+					</div>
+				</div>
+				<button type="submit" class="testButton">Envoyer</button>
+			</form>
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+
+    <script src="/js/regex.js"></script>
+
+
+{% endblock %}

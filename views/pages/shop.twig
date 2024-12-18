@@ -1,0 +1,42 @@
+{% extends "../layouts/base.twig" %}
+
+{% block title %}
+    <title>Boutique producteur</title>
+{% endblock %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/shop.css">
+    		<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
+{% block main %}
+    <div class="bp-container">
+        <h1 class="bp-boutique-header">
+            Boutique de {{ producteur.entrepriseNom }}
+        </h1>
+
+        <div class="bp-product-list">
+            {% for produit in produits %}
+                <div class="bp-product-item">
+                    <h3 class="bp-product-name">{{ produit.nom }}</h3>
+                    <p class="bp-product-price">Prix : {{ produit.prix }} €</p>
+                    <p class="bp-product-quantity">Quantité : {{ produit.quantite }} Kg</p>
+                                        <p class="bp-product-details">details du produit : <br>{{ produit.details }}    </p>
+
+                    <form action="/addPanier/{{ produit.id }}" method="POST" class="bp-add-to-cart-form">
+                        <input type="number" name="quantite" value="1" min="1" max="{{produit.quantite}}"class="bp-quantity-input"
+                        oninput="this.value = Math.min(Math.floor(this.value), this.max);">
+                        <button type="submit" id="addPanierButton" class="bp-add-to-cart-button">Ajouter au panier</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/js/ux.js"></script>
+
+
+{% endblock %}

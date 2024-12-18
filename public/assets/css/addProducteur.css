@@ -1,0 +1,95 @@
+/* styles.css */
+
+/* Style principal du formulaire d'inscription */
+.mainInscriptionProducteur {
+    background: rgba(255, 255, 255,0.3);
+    padding: 20px; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    width: 60vw; /* Largeur fixe du formulaire */
+    position: absolute; /* Positionnement absolu */
+    top: 60%; /* Positionne le haut à 50% de la hauteur de la fenêtre */
+    left: 50%; /* Positionne la gauche à 50% de la largeur de la fenêtre */
+    transform: translate(-50%, -50%); /* Centrage de l'élément */
+    margin: 20px;
+    background: rgba(128, 128, 128, 0.3);
+    
+    border : 2px solid rgb(0, 0, 0);
+}
+
+.containerInscriptionProducteur {
+    display: flex; /* Utilise le modèle flex pour aligner les éléments */
+    flex-direction: column; /* Aligne les éléments en colonne */
+    align-items: center; /* Centre horizontalement */
+    justify-content: space-between;
+    margin :auto
+}
+
+.titleInscriptionProducteur {
+    text-align: center; /* Centre le titre */
+    margin-bottom: 20px; /* Espacement en bas du titre */
+    color:rgb(0, 0, 0);
+}
+
+select#sexe.inputInscriptionProducteur{
+    color : rgb(0, 0, 0)
+}
+select#bio.inputInscriptionProducteur{
+    color : rgb(0, 0, 0)
+}
+
+
+.formInscriptionProducteur {
+    display: flex; /* Utilise le modèle flex pour aligner les éléments */
+    flex-direction: column; /* Aligne les éléments en colonne */
+    width: 100%; /* Prend toute la largeur du conteneur */
+}
+
+.formGroupInscriptionProducteur {
+    margin-bottom: 15px; /* Espacement entre les groupes de formulaire */
+}
+
+.labelInscriptionProducteur {
+    margin: 10px 0 5px; /* Espacement autour des labels */
+    color:rgb(0, 0, 0);
+}
+
+.inputInscriptionProducteur {
+    padding: 10px; /* Espacement interne des champs de saisie */
+    border: 2px solid rgb(0, 0, 0); /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+    caret-color: rgb(0, 0, 0); /* Couleur du curseur d'écriture */
+    background-color: rgb(242, 253, 225);
+    width : 120%;
+
+
+}
+
+
+
+.inputInscriptionProducteur:focus {
+    outline: none; /* Supprime le contour par défaut du navigateur */
+    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement plus clair quand sélectionné */
+    color: white; /* Garde le texte en blanc même quand sélectionné */
+}
+
+
+
+.error {
+    color: red; /* Couleur des messages d'erreur */
+    font-size: 0.9em; /* Taille de police plus petite */
+}
+
+
+
+.divPourDisplayFormProducteur{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.inputInscriptionProducteur option {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(69, 69, 69); /* Couleur du texte de l'option sélectionnée */
+}
+

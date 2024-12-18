@@ -1,0 +1,11 @@
+{% extends "../layouts/base.twig" %}
+
+{% block main %}
+<div class="container">
+    <h2>Importer des produits via CSV</h2>
+    <form action="/uploadCsv" method="POST" enctype="multipart/form-data">
+        <input type="file" name="csv_file" accept=".csv" required>
+        <button type="submit">Importer</button>
+    </form>
+</div>
+{% endblock %}

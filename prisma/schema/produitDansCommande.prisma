@@ -9,5 +9,5 @@ model ProduitDansCommande {
     commande   Commande @relation(fields: [idCommande], references: [id])
 
     idProduit Int
-    produit   Produit @relation(fields: [idProduit], references: [id])
+    produit   Produit @relation(fields: [idProduit], references: [id], onDelete: Cascade)
 }

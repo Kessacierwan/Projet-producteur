@@ -13,6 +13,9 @@
     transform: translate(-50%, -50%); /* Centrage de l'élément */
 }
 
+footer{
+    display: none;
+}
 
 
 
@@ -51,9 +54,9 @@
     border-radius: 4px;
     /* Coins arrondis */
     margin-bottom: 15px;
-    /* Espacement en bas */
+    /* Espacement en bas */ 
     background-color: rgb(242, 253, 225);
-    caret-color: white; /* Couleur du curseur d'écriture */
+    caret-color: rgb(0, 0, 0); /* Couleur du curseur d'écriture */
 min-width: 100%;
 
 }
@@ -69,8 +72,3 @@ min-width: 100%;
 
 
 
-.inputLoginClient:focus {
-    outline: none; /* Supprime le contour par défaut du navigateur */
-    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement plus clair quand sélectionné */
-    color: white; /* Garde le texte en blanc même quand sélectionné */
-}

@@ -52,7 +52,9 @@ dashBoardRouter.get("/", async (req, res) => {
                     id: true,
                     adresse: true,
                     nom: true,
-                    bio: true
+                    bio: true,
+                    photoUrl: true // Assurez-vous que ce champ est inclus
+
                 }
             });
 

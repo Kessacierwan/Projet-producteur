@@ -5,7 +5,24 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
-
+//fonction pour créer l'effet de chargement 
+function toggleLoadingIndicator(show) {
+    const loadingIndicator = document.getElementById('loading-indicator');
+    if (!loadingIndicator) {
+        const divPourAppenchild = document.querySelector("#divPourAppenchild")
+        const indicator = document.createElement('div');
+        indicator.id = 'loading-indicator';
+        indicator.innerHTML = '<p>Chargement en cours...</p><div class="spinner"></div>';
+        indicator.style.position = 'relative';
+        
+        indicator.style.backgroundColor = 'rgba(95, 95, 95, 0.9)';
+        indicator.style.padding = '20px';
+        indicator.style.borderRadius = '10px';
+        indicator.style.zIndex = '1';
+        divPourAppenchild.appendChild(indicator);
+    }
+    document.getElementById('loading-indicator').style.display = show ? 'block' : 'none';
+}
 // Fonction pour calculer la distance entre deux points en km
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Rayon de la Terre en km
@@ -57,6 +74,8 @@ async function fetchWithRetry(url, maxRetries = 3) {
 
 // Fonction pour afficher les producteurs sur la carte
 async function displayProducers(maxDistance, bioPreference) {
+    toggleLoadingIndicator(true); // Afficher l'indicateur de chargement
+
     let producteursCorrespondants = [];
 
     // Vider la carte des anciens marqueurs
@@ -72,6 +91,7 @@ async function displayProducers(maxDistance, bioPreference) {
         map.setView([userLocation.lat, userLocation.lon], 13);
     } catch (error) {
         console.error("Impossible d'obtenir la position de l'utilisateur, utilisation de la position par défaut:", error);
+        // Aubagne, France
         userLocation = { lat: 43.2841, lon: 5.5763 };
     }
 
@@ -125,12 +145,14 @@ async function displayProducers(maxDistance, bioPreference) {
         producteurElement.className = 'producteur-item';
         producteurElement.innerHTML = `
             <h3>${producteur.nom}</h3>
-            <p>Adresse: ${producteur.adresse}</p>
+   <img src="${producteur.photoUrl}" alt="Photo de ${producteur.nom}" class="producteur-photo">            <p>Adresse: ${producteur.adresse}</p>
             <p>Distance: ${producteur.distance.toFixed(2)} km</p>
             <p>Bio: ${producteur.bio}</p>
-            <a href="/boutique/${producteur.id}">Boutique</a>
+            <a href="/boutique/${producteur.id}" class="ProducteurShopAcces">Boutique</a>
         `;
         producteursContainer.appendChild(producteurElement);
+        toggleLoadingIndicator(false); // Afficher l'indicateur de chargement
+
     });
 
     // Remplacer l'ancien conteneur de producteurs s'il existe
@@ -142,6 +164,7 @@ async function displayProducers(maxDistance, bioPreference) {
     }
     
     return producteursCorrespondants;
+
 }
 
 // Écouter les changements sur le sélecteur de distance et de préférence bio

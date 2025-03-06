@@ -154,12 +154,17 @@ panierRouter.post("/addPanier/:id", authguard, async (req, res) => {
         } else {
             // Créer une nouvelle commande
             commande = await prisma.commande.create({
+                //spécifie les données à insérer
                 data: {
+                    //statue en attente tant que la commande n'a pas été payée 
                     statue: "En attente",
                     clientId: clientId,
                     total: produit.prix * quantite,
+                    // Gère la création des relations avec les produits dans la commande.
                     produitsDansCommande: {
+                        // Crée une nouvelle entrée dans la relation "produitsDansCommande".
                         create: {
+                            // Connecte un produit existant à l'aide de son ID.
                             produit: { connect: { id: produitId } },
                             quantite: quantite,
                             total: produit.prix * quantite
@@ -183,8 +188,8 @@ panierRouter.post("/addPanier/:id", authguard, async (req, res) => {
             }
         });
 
-        // Calculer le total des quantités dans le panier
-        const totalQty = commande.produitsDansCommande.reduce((sum, item) => sum + item.quantite, 0);
+        // Calculer le total des elements dans le panier
+        const totalQty = commande.produitsDansCommande.length;
 
         // Mettre à jour totalQty dans la session
         req.session.totalQty = totalQty;
@@ -198,7 +203,7 @@ panierRouter.post("/addPanier/:id", authguard, async (req, res) => {
             message: "Produit ajouté au panier avec succès",
             panier: commande.produitsDansCommande,
             nouvelleQuantite,
-            totalQty: totalQty // Ajout de totalQty dans la réponse
+            totalQty: totalQty 
         });
     } catch (error) {
         console.error("Erreur lors de l'ajout au panier:", error);

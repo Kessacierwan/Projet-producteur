@@ -9,7 +9,7 @@
 
 {% block style %}
 	<link rel="stylesheet" href="assets/css/manageProduct.css">
-			<link rel="stylesheet" href="/assets/css/globals.css">
+	<link rel="stylesheet" href="/assets/css/globals.css">
 
 {% endblock %}
 
@@ -43,14 +43,14 @@
 				<button class="mp-submit-button">Ajouter</button>
 			</form>
 		</div>
-		<h3 class="mp-list-title">Produits du producteur</h3>
+		<h3 class="mp-list-title">Mon stock</h3>
 
 		<div class="mp-product-list">
 
 			{% for produit in produits %}
-				<div class="mp-product-item">
+				<div class="mp-product-item"  data-product-id="{{ produit.id }}">
 					<ul class="mp-product-details">
-						<li class="mp-product-name">Nom :
+						<li class="mp-product-name">
 							{{ produit.nom }}</li>
 						<li class="mp-product-price">Prix :
 							{{ produit.prix }}
@@ -62,11 +62,15 @@
 
 					</ul>
 					<div class="mp-product-actions">
-						<a href="/deleteProduct/{{ produit.id }}" class="mp-delete-button">Supprimer produit</a>
+						<button data-product-id="{{ produit.id }}" class="delete-product-button">Supprimer</button>
 						<a href="/modifyProduct/{{ produit.id }}" class="mp-modify-button">Modifier produit</a>
 					</div>
 				</div>
 			{% endfor %}
 		</div>
 	</main>
+{% endblock %}
+{% block script %}
+
+    <script src="/js/ajaxProduct.js"></script>
 {% endblock %}

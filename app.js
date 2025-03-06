@@ -14,6 +14,7 @@ app.use(express.json())
 
 app.use(express.static("./public"))
 app.use(express.urlencoded({extended: true}))
+app.use('/uploads', express.static('uploads'));
 
 // Configuration de la session
 app.use(session({

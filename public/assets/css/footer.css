@@ -1,0 +1,20 @@
+.footerSection{
+    background-color: #5d4c3a;
+    text-align: center;
+    margin-right: 35%;
+    margin-left: 35%;
+    border-radius: 5px;
+}
+
+.footerTitle{
+    color:  #838ff8;
+}
+
+.footerText{
+    color:#fff
+}
+
+.githubLink{
+    text-decoration: none;
+    color: #838ff8;
+}

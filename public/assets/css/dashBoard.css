@@ -33,12 +33,17 @@ color: #666;
 }
 
 .prod-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
     font-family: Arial, sans-serif;
-background-image: url(../img/serres_pays-bas.jpg);
+    background-image: url(../img/serres_pays-bas.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #333;
+    padding:20px;
+    min-height: 100vh;
 }
 
 .prod-welcome-header {
@@ -50,7 +55,9 @@ background-image: url(../img/serres_pays-bas.jpg);
 
 .prod-name {
     font-weight: bold;
-    color: #444;
+    color: black;
+    font-size: 35px;
+    text-align: center;
 }
 
 .prod-manage-button {
@@ -77,8 +84,9 @@ background-image: url(../img/serres_pays-bas.jpg);
 }
 
 .prod-list-title {
-    font-size: 1.2em;
-    color: #444;
+    font-size: 2.5em;
+    text-align: center;
+    color: #f8ec83;
     margin-bottom: 15px;
     border-bottom: 2px solid #000000;
     padding-bottom: 5px;
@@ -91,6 +99,8 @@ background-image: url(../img/serres_pays-bas.jpg);
     background: rgba(173, 173, 173, 0.7);
     border-radius: 5px;
     transition: transform 0.3s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 .prod-product-item:hover {
@@ -100,6 +110,7 @@ background-image: url(../img/serres_pays-bas.jpg);
 .prod-product-details {
     list-style-type: none;
     padding: 0;
+    color: #000000;
 }
 
 .prod-product-details li {
@@ -108,11 +119,12 @@ background-image: url(../img/serres_pays-bas.jpg);
 
 .prod-product-name {
     font-weight: bold;
-    color: #333;
+    color:  #f8ec83;
+    font-size : 25px ;
 }
 
 .prod-product-price, .prod-product-quantity {
-    color: #666;
+    color: #000000;
 }
 
 .prod-no-session-header {
@@ -129,6 +141,15 @@ background-image: url(../img/serres_pays-bas.jpg);
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
+    
+}
+
+@media (max-width: 768px) {
+    .producteurFeatures {
+display: flex;
+  }
+
+
 }
 
 @media (min-width: 1024px) {
@@ -146,8 +167,10 @@ background-image: url(../img/serres_pays-bas.jpg);
     /* Centre la carte horizontalement */
 }
 .container{
-    background-image: url(../img/cagettes.jpg);
+    background-image: url(../img/IAFruitsLegumes.png);
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     margin: 0;
 }
@@ -159,7 +182,7 @@ background-image: url(../img/serres_pays-bas.jpg);
 }
 
 .producteur-item {
-    background-color: #f0f0f0;
+    background: rgba(95, 95, 95, 0.9);
     border-radius: 8px;
     padding: 15px;
     margin: 10px;
@@ -169,18 +192,19 @@ background-image: url(../img/serres_pays-bas.jpg);
 
 .producteur-item h3 {
     margin-top: 0;
-    color: #333;
+    color:  #f8ec83;
 }
 
 .producteur-item p {
     margin: 5px 0;
-    color: #666;
+    color: #cccccc;
 }
 
 .mapSelectorContainer {
     display: flex;
     max-width: 60%;
     margin: auto;
+    position: relative;
     justify-content: space-evenly;
     align-items: center;
     background-color: #fff9b3;
@@ -233,8 +257,109 @@ select option {
         flex-direction: column;
         align-items: stretch;
     }
+    .producteur-photo {
+        width: 100px; /* Largeur de l'image */
+        height: auto; /* Conserve les proportions */
+        border-radius: 5px; /* Coins arrondis */
+        margin-bottom: 10px; /* Espacement avec le contenu en dessous */
+    }
+
 
     .mapSelectors, .preferenceSelector {
         margin-bottom: 10px;
     }
 }
+
+@media(min-width: 600px){
+    .producteur-photo {
+        width: 200px; /* Largeur de l'image */
+        height: auto; /* Conserve les proportions */
+        border-radius: 5px; /* Coins arrondis */
+        margin-bottom: 10px; /* Espacement avec le contenu en dessous */
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+.producteurFeatures{
+    margin-top: 20px;
+    margin-left:2%;
+    background-color: #f8ec83a9; /* Fond semi-transparent pour améliorer la lisibilité */
+    width: 100%;
+    height: fit-content;
+    max-width: 300px; /* Largeur maximale pour éviter l'étirement excessif */
+    padding: 2px;
+    border-radius: 5px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+
+/* Boutton d'acces aux magasins producteurs*/
+.ProducteurShopAcces {
+    --glow-color: #838ff8;
+    color: var(--glow-color);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 0.75em;
+    outline: none;
+    position: relative;
+    top: 10%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+}
+
+
+
+.ProducteurShopAcces:hover {
+    color:#f8ec83;
+   
+    cursor: pointer;
+}
+
+
+
+
+.producteurHeader {
+
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    background-color: #f8ec83a9;
+    max-width: 300px;
+}
+
+.producteurBigHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.createStripesAccountForm{
+
+}
+#divPourAppenchild{
+width: 100px;
+margin: auto;}

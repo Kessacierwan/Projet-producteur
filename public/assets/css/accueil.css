@@ -51,22 +51,33 @@
 
 
 
-.animation {
-  height:50px;
-  overflow:hidden;
-  margin-left: 1rem;
-}
-
-.animation > div > div {
-  padding: 0.25rem 0.75rem;
-  height: 3.75rem; /* Ajustez cette valeur pour correspondre à la nouvelle hauteur */
-  margin-bottom: 3rem; /* Doit correspondre à la hauteur */
-  display: inline-block;
-}
-
-.animation div:first-child {
-  animation: text-animation 8s infinite;
-}
+  .animation {
+    height: 50px;
+    overflow: hidden;
+    margin-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .animation > div {
+    position: relative;
+    animation: move 9s linear infinite;
+  }
+  
+  .animation > div > div {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+  }
+  
+  @keyframes move {
+    0% { transform: translateY(0); }
+    33.33% { transform: translateY(-50px); }
+    66.66% { transform: translateY(-100px); }
+    100% { transform: translateY(-150px); }
+  }
+  
 
 
 
@@ -99,28 +110,40 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.global-enjeux-section{
+background-color: #f8ec83;
+width : 80%;
+align-items: center;
+margin: auto;
+border-radius: 8px;
 
-.enjeu-item {
-  background-color: #ffffff;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
+.enjeu-item {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Pour une transition fluide */
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* Pour s'assurer que les autres divs sont derrière */
+
+}
+
+
 .enjeu-title {
-  font-size: 1.4em;
-  color: #333;
+  margin-top: 0;
+  font-size: 1.7em;
+  color:  rgb(255, 255, 255);
   margin-bottom: 10px;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 5px;
+  padding-bottom: 5px;  
+  background-color: rgba(0, 0, 0, 0.459);
+  backdrop-filter: blur(5px);
+text-align: center;
+
 }
 
 .enjeu-description {
@@ -134,8 +157,8 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;  
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,13 +167,14 @@
 }
 
 .enjeu-overlay-text {
-  color: #fff;
-  font-size: 1.2em;
+  color:  rgb(255, 255, 255);
+  font-size: 1.5em;
   font-weight: bold;
+  text-align: center;
 }
 
 .enjeu-item:hover .enjeu-overlay {
-  opacity: 0.75;
+  opacity: 0.9;
 }
 
 /* Responsive design */
@@ -191,10 +215,189 @@
 
 }
 #enjeuxSociaux{
-  background-image: url();
+  background-image: url(../img/enjeux\ sociaux.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-#enjeuxEnvironnementaux:hover, #enjeuxFinancier:hover,#enjeuxPolitique:hover,#enjeuxSociaux:hover{
+#enjeuxEnvironnementaux:hover{
   cursor: pointer;
+  width: 430%;
+  z-index: 2;
+}
+#enjeuxFinancier:hover{
+  cursor: pointer;
+  width: 430%;
+  z-index: 2;
+  left: -110%;
+}
+#enjeuxPolitique:hover{
+  cursor: pointer;
+  width: 430%;
+  z-index: 2;
+  left: -220%;
+
+}
+#enjeuxSociaux:hover{
+  cursor: pointer;
+  width: 430%;
+  left: -330%;
+  z-index: 2;
 }
 
+#enjeu-overlay-text-financier{
+  font-size: 1.25em;
+}
+
+#enjeu-overlay-text-politique{
+  font-size: 1.25em;
+}
+#enjeu-overlay-text-politique{
+  font-size: 1.25em;
+}
+
+.agriboost-title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+}
+
+
+/* Pour les écrans de petite taille (smartphones) */
+@media screen and (max-width: 480px) {
+  .enjeux-section {
+    height: auto;
+    padding: 10px;
+  }
+
+  .enjeu-overlay-text {
+    font-size: 0.9em !important;  /* Réduction de la taille pour mobile */
+    line-height: 1.3;
+    padding: 5px;
+  }
+
+  #enjeu-overlay-text-financier {
+    font-size: 0.85em !important;
+  }
+
+  .enjeu-item {
+    margin-bottom: 15px;
+  }
+
+  .enjeu-title {
+    font-size: 1.4em;
+  }
+
+  .enjeu-overlay-text {
+    font-size: 1.2em;
+  }
+
+  .agriboost-title {
+    font-size: 1.6em;
+  }
+
+  .global-enjeux-section {
+    width: 95%;
+  }
+}
+
+/* Pour les tablettes */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .enjeux-section {
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .enjeu-item{
+    height: 150px;
+  }
+
+  .enjeu-overlay-text {
+    font-size: 1.2em !important;
+    line-height: 1.4;
+  }
+
+  #enjeu-overlay-text-financier {
+    font-size: 1em !important;
+  }
+
+  .enjeu-item {
+    margin-bottom: 15px;
+  }
+
+  .global-enjeux-section {
+    width: 90%;
+  }
+  #enjeuxEnvironnementaux:hover{
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+  }
+  #enjeuxFinancier:hover{
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+  }
+  #enjeuxPolitique:hover{
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    left:0;
+  
+  }
+  #enjeuxSociaux:hover{
+    cursor: pointer;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+@media screen and (max-width : 480px){
+  .enjeu-item{
+    height: 150px;
+  }
+}
+
+/* Pour les écrans moyens (petits ordinateurs portables) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .enjeux-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .global-enjeux-section {
+    width: 85%;
+  }
+
+  #enjeuxEnvironnementaux:hover{
+    cursor: pointer;
+    width: 207%;
+    z-index: 2;
+  }
+  #enjeuxFinancier:hover{
+    cursor: pointer;
+    width: 207%;
+    z-index: 2;
+    left: -107%;
+  }
+  #enjeuxPolitique:hover{
+    cursor: pointer;
+    width: 207%;
+    z-index: 2;
+    left:0;
+  
+  }
+  #enjeuxSociaux:hover{
+    cursor: pointer;
+    width: 207%;
+    left: -107%;
+    z-index: 2;
+  }
+}
+
+/* Pour les grands écrans */
+@media screen and (min-width: 1025px) {
+  .enjeux-section {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

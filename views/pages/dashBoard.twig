@@ -3,7 +3,7 @@
 {% block style %}
 	<link rel="stylesheet" href="/assets/css/dashBoard.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-			<link rel="stylesheet" href="/assets/css/globals.css">
+	<link rel="stylesheet" href="/assets/css/globals.css">
 
 	<style></style>
 {% endblock %}
@@ -13,11 +13,7 @@
 		class="container">
 		{# vue client  #}
 		{% if client is defined and client is not null %}
-			<h1 class="welcome-header">
-				Bienvenue :
-				<div class="client-name">{{ client.prenom }}
-					{{ client.nom }}</div>
-			</h1>
+
 
 			<!-- Carte ici -->
 			<div class="mapSelectorContainer">
@@ -43,24 +39,36 @@
 				</div>
 			</div>
 			<div id="map" class="map"></div>
+			<div id="divPourAppenchild"></div>
 
 
 			{# vue producteur  #}
 		{% elseif producteur is defined and producteur is not null %}
 			<div class="prod-container">
-				<h2 class="prod-welcome-header">
-					<span class="prod-name">{{ producteur.entrepriseNom }}</span>
-				</h2>
-<a href="/manageProduct" class="testButton" style="text-decoration: none;">Gérer mes produits</a>
-<br>
-<a href="/CreateStripeProducteur" class="testButton" style="text-decoration: none;">Créer un compte stripe</a>
-<br>
+				<div class="producteurBigHeader">
 
-<a href="/uploadCsv" class="testButton" style="text-decoration: none;">Importer via CSV</a>
+					<div class="producteurFeatures">
+						<a href="/manageProduct" class="testButton" style="text-decoration: none;">Gérer mes produits</a>
+						<br>
+						        <form action="/create-stripe-account" class="createStripesAccountForm" method="POST">
+            <input type="hidden" id="stripe-token" name="stripeToken">
+            <button id="create-stripe-account" type="button" class="testButton">Créer un compte Stripe</button>
+        </form>
+						
 
-				<p class="prod-list-title">Mes produits</p>
+						<a href="/uploadCsv" class="testButton" style="text-decoration: none;">Importer via CSV</a>
+					</div>
+					<div class="producteurHeader">
+						<h2 class="prod-welcome-header">
+							<span class="prod-name">{{ producteur.entrepriseNom }}</span>
+						</h2>
+						<img src="{{ producteur.photoUrl }}" alt="Photo du producteur" class="producteur-photo">
+
+					</div>
+				</div>
 
 				<div class="prod-product-list">
+					<p class="prod-list-title">Mes produits</p>
 
 					{% for produit in produits %}
 						<div class="prod-product-item">
@@ -95,4 +103,9 @@
 		const producteurs = {{ producteurs|json_encode|raw }};
 	</script>
 	<script src="/js/map.js"></script>
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		var stripePublicKey = '{{ stripePublicKey }}';
+	</script>
+	<script src="/js/create-stripe-account.js"></script>
 {% endblock %}

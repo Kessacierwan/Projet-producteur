@@ -41,9 +41,8 @@ productRouter.post("/addProduct", async (req, res) => {
                 prix: parseFloat(req.body.prix),
                 quantite: parseFloat(req.body.quantite),
                 details : req.body.details,
-                producteurs: { // Utiliser connect pour lier le produit au producteur
-                    connect: { id: req.session.producteur.id } // Assurez-vous d'utiliser l'ID du producteur
-                }
+                producteurId: req.session.producteur.id 
+
             }
         });
 
@@ -55,23 +54,20 @@ productRouter.post("/addProduct", async (req, res) => {
         ); 
     }
 });
-
-// supprimer un produit //
-
-productRouter.get("/deleteProduct/:id", authguard, async (req, res) => {
+// Route de suppression produit avec AJAX //
+productRouter.delete("/deleteProduct/:id", authguard, async (req, res) => {
     try {
         const deleteProduct = await prisma.produit.delete({
             where: {
                 id: parseInt(req.params.id)
             }
         })
-        res.redirect("/")
+        res.json({ success: true, message: "Produit supprimé avec succès" });
     } catch (error) {
-        console.log(error)
-        res.redirect("/")
+        console.error(error);
+        res.status(500).json({ success: false, message: "Erreur lors de la suppression du produit" });
     }
-
-})
+});
 
 
 // modifier un produit // 

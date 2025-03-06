@@ -22,10 +22,12 @@ producteurRouter.get("/loginProducteur", (req,res)=>{
 })
 
  // envoyer les données du formulaire du producteur(inscription dans la DB producteur) // 
- producteurRouter.post("/addProducteur",async(req,res)=>{
+ producteurRouter.post("/addProducteur",upload.single('photo'),async(req,res)=>{
     if (req.body.motDePasse === req.body.confirm_motDePasse) {
 
     try {
+        const photoUrl = req.file ? `/uploads/${req.file.filename}` : null;
+
         const producteur = await prisma.producteur.create({
             data:{
                 entrepriseNom : req.body.entrepriseNom,
@@ -37,7 +39,8 @@ producteurRouter.get("/loginProducteur", (req,res)=>{
                 sexe : req.body.sexe,
                 adresse : req.body.adresse,
                 siret : req.body.siret,
-                bio : req.body.bio
+                bio : req.body.bio,
+                photoUrl : photoUrl
 
 
             }
@@ -92,57 +95,71 @@ producteurRouter.get("/createStripeProducteur", authguard, async (req, res) => {
 
 // Import de fichier CSV // 
 
-producteurRouter.post('/uploadCsv', upload.single('csv_file'), async (req, res) => {
+// Route pour gérer l'upload et le traitement d'un fichier CSV
+producteurRouter.post('/uploadCsv', authguard, upload.single('csv_file'), async (req, res) => {
+    // Vérifie si un fichier a été uploadé
     if (!req.file) {
         return res.status(400).send('Aucun fichier n\'a été uploadé.');
     }
 
     try {
+        // Lit le contenu du fichier CSV
         const fileContent = fs.readFileSync(req.file.path, 'utf8');
+        // Parse le contenu CSV en un tableau d'objets
         const results = parse(fileContent, { columns: true, skip_empty_lines: true });
 
+        // Récupère l'ID du producteur à partir de la session
         const producteurId = req.session.producteur.id;
 
+        // Parcourt chaque ligne du fichier CSV
         for (let row of results) {
-            const produit = await prisma.produit.upsert({
+            // Recherche un produit existant par nom et producteur
+            const existingProduit = await prisma.produit.findFirst({
                 where: {
-                    id: parseInt(row.ID)
-                },
-                update: {
                     nom: row.NomProduit,
-                    prix: parseFloat(row['Prix au kg (€)']),
-                    quantite: parseFloat(row['Quantité Kg']),
-                    details: row.Details || null,
-                    producteurs: {
-                        connect: { id: producteurId }
-                    }
-                },
-                create: {
-                    nom: row.NomProduit,
-                    prix: parseFloat(row['Prix au kg (€)']),
-                    quantite: parseFloat(row['Quantité Kg']),
-                    details: row.Details || null,
-                    producteurs: {
-                        connect: { id: producteurId }
-                    }
-                },
-                include: {
-                    producteurs: true
+                    producteurId: producteurId
+
                 }
             });
 
-            console.log(`Produit ${produit.nom} mis à jour/créé et associé au producteur ${producteurId}`);
+            if (existingProduit) {
+                // Met à jour le produit existant
+                await prisma.produit.update({
+                    where: { id: existingProduit.id },
+                    data: {
+                        prix: parseFloat(row['Prix au kg (€)']),
+                        quantite: parseFloat(row['Quantité Kg']),
+                        details: row.Details || null,
+                    }
+                });
+                console.log(`Produit ${existingProduit.nom} mis à jour pour le producteur ${producteurId}`);
+            } else {
+                // Crée un nouveau produit
+                const newProduit = await prisma.produit.create({
+                    data: {
+                        nom: row.NomProduit,
+                        prix: parseFloat(row['Prix au kg (€)']),
+                        quantite: parseFloat(row['Quantité Kg']),
+                        details: row.Details || null,
+                        producteurId: producteurId 
+
+                    }
+                });
+                console.log(`Nouveau produit ${newProduit.nom} créé et associé au producteur ${producteurId}`);
+            }
         }
 
+        // Redirige vers la page d'accueil après le traitement
         res.redirect('/');
     } catch (error) {
+        // Gère les erreurs lors de l'importation
         console.error(error);
         res.status(500).send('Erreur lors de l\'importation des produits');
     }
 });
 
 // get la vue //
-producteurRouter.get('/uploadCsv', (req, res) => {
+producteurRouter.get('/uploadCsv',authguard, (req, res) => {
     console.log("get page CSV activée")
     res.render('pages/uploadCsv.twig');
 });

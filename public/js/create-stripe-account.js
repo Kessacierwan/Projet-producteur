@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusMessage = document.getElementById('status-message');
 
     createAccountButton.addEventListener('click', async function() {
-        statusMessage.textContent = 'Création du compte en cours...';
 
         try {
             const response = await fetch('/api/create-stripe-account', {

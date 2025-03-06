@@ -9,14 +9,14 @@
                 const productItem = this.closest('.bp-product-item');
                 const quantityDisplay = productItem.querySelector('.bp-product-quantity');
                 const productId = this.action.split('/').pop(); // Extrait l'ID du produit de l'URL du formulaire
-                const quantity = this.querySelector('input[name="quantite"]').value;
+                const quantity = this.querySelector('select[name="quantite"]').value;
                 
                 // Effet visuel pour le feedback utilisateur
                 button.style.backgroundColor = "lightgreen";
                 productItem.style.border = "2px solid lightgreen";
                 
                 try {
-                    const response = await fetch(this.action, {
+                    const response = await fetch(`/addPanier/${productId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -64,7 +64,7 @@
         confirmationElement.textContent = message;
         confirmationElement.className = isError ? 'error-message' : 'confirmation-message';
         confirmationElement.style.position = 'fixed';
-        confirmationElement.style.top = '20px';
+        confirmationElement.style.top = '85px';
         confirmationElement.style.right = '20px';
         confirmationElement.style.padding = '10px';
         confirmationElement.style.backgroundColor = isError ? '#ffcccc' : '#ccffcc';
@@ -73,3 +73,23 @@
         document.body.appendChild(confirmationElement);
         setTimeout(() => confirmationElement.remove(), 3000);
     }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const enjeuItems = document.querySelectorAll('.enjeu-item');
+    
+        enjeuItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+
+                // Ajouter la classe 'expanded' à l'élément survolé
+                item.classList.add('expanded');
+            });
+    
+            item.addEventListener('mouseleave', function() {
+                // Retirer la classe 'expanded' lorsque la souris quitte l'élément
+                item.classList.remove('expanded');
+            });
+        });
+    });
+    

@@ -4,9 +4,8 @@ model Produit {
     prix     Decimal @db.Decimal(5, 2)
     quantite Decimal @db.Decimal(5,2)
     details String ? 
-
-    producteurs Producteur[] @relation("ProduitProducteur")
-
+    producteurId Int  
+    producteur Producteur @relation(fields: [producteurId], references: [id]) 
     produitsDansCommande ProduitDansCommande[]
 
 }

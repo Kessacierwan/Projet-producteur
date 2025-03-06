@@ -11,6 +11,11 @@
     transform: translate(-50%, -50%); /* Centrage de l'élément */
 }
 
+footer{
+    display: none;
+}
+
+
 .secondTitleLoginProducteur {
     text-align: center; /* Centre le titre */
     color: rgb(0, 0, 0);

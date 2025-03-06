@@ -18,11 +18,6 @@ body {
     margin-right: 15px;
 }
 
-.reSize{
-    height: min-content;
-    display: flex;
-    align-items: center;
-}
 
 .reSize h1 {
     margin: 0;
@@ -79,9 +74,7 @@ body {
     border-radius: 10px;
     max-width: 130px;
 }
-.agriBoostLogo{
-    max-height:50px;
-}
+
 
 .dropdown-content a {
     color: black;
@@ -139,10 +132,9 @@ body {
   /* JUMP */
   h1 {
     cursor: default;
-
+display: flex;
 
     margin: auto;
-    display: block;
     text-align: center;
   }
   
@@ -219,4 +211,26 @@ body {
     }
   }
 
+  @media screen and (min-width: 769px) {
+    .reSize{
+      height: min-content;
+      display: flex;
+      align-items: center;
+gap : 20px;      
+  }
+  
+  }
 
+  @media screen and (max-width: 768px) {
+    .reSize{
+      height: min-content;
+      display: block;
+      align-items: center;
+  }
+  
+  }
+
+  .logoTitle{
+    position: relative;
+    z-index: 1;
+  }

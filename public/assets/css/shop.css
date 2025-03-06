@@ -1,11 +1,12 @@
 /* Styles globaux */
 .bp-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background-image: url(../img/IAFruitsLegumes.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    padding:20px;
 }
 
 /* Titre de la boutique */
@@ -16,6 +17,8 @@
     margin-bottom: 30px;
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
+    position: relative;
+    z-index: 1; 
 }
 
 /* Liste des produits */
@@ -27,11 +30,11 @@
 
 /* Carte de produit */
 .bp-product-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background: rgba(95, 95, 95, 0.9);
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(0, 0, 0);
     transition: transform 0.3s ease, border 0.3s ease;
 }
 .bp-product-item.added-to-cart {
@@ -43,16 +46,18 @@
 
 /* Nom du produit */
 .bp-product-name {
-    font-size: 1.2em;
-    color: #444;
+    font-size: 26px;
+    color:  #f8ec83;
     margin-bottom: 10px;
 }
 
 /* Prix et quantité */
 .bp-product-price,
-.bp-product-quantity {
+.bp-product-quantity,
+.bp-product-details {
     margin: 5px 0;
-    color: #666;
+    color: #cccccc;
+    font-size: 18px;
 }
 
 /* Formulaire d'ajout au panier */

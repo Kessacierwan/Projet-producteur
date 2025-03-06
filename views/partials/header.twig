@@ -1,6 +1,6 @@
 {% block style %}
 	<link rel="stylesheet" href="/assets/css/header.css">
-			<link rel="stylesheet" href="/assets/css/globals.css">
+	<link rel="stylesheet" href="/assets/css/globals.css">
 
 {% endblock %}
 
@@ -10,41 +10,42 @@
 		<nav class="nav">
 			<div class="divPourFlexHeader">
 				<div class="reSize">
-				<img class="agriBoostLogo" src="/assets/img/logoAgriBoost.png" alt="">
-				<div class="divMainTitle">
-					<h1 class="mainTitle">
-  <span>A</span>
-  <span>G</span>
-  <span>R</span>
-  <span>I</span>
-  <span>B</span>
-  <span>O</span>
-  <span>O</span>
-  <span>S</span>
-  <span>T</span>
-					
-					</h1>
+					<div class="divMainTitle">
+						<h1 class="mainTitle">
+							<span>A</span>
+							<span>G</span>
+							<span>R</span>
+							<span>I</span>
+							<span>B</span>
+							<span>O</span>
+							<span>O</span>
+							<span>S</span>
+							<span>T</span>
+
+						</h1>
 					</div>
+									<p class="logoTitle">La plateforme de vente de produits locaux en ligne</p>
+
 				</div>
 				<div class="reSize">
 					<ul class="nav-list">
 						<li>
-							<a href="/"  class="testButton">Accueil</a>
+							<a href="/" class="testButton">Accueil</a>
 						</li>
 						{% if (client is not defined or client is null) and (producteur is not defined or producteur is null) %}
 							<li class="dropdown">
 								<a href="#" class="testButton">Connexion</a>
 								<div class="dropdown-content">
-									<a href="/loginClient"  class="testButton">Client</a><br>
-									<a href="/loginProducteur"  class="testButton">Producteur</a>
+									<a href="/loginClient" class="testButton">Client</a><br>
+									<a href="/loginProducteur" class="testButton">Producteur</a>
 								</div>
 							</li>
 
 							<li class="dropdown">
 								<a href="#" class="testButton">Inscription</a>
 								<div class="dropdown-content" id="secondDropDown">
-									<a href="/addClient"  class="testButton">Client</a>
-									<a href="/addProducteur"  class="testButton">
+									<a href="/addClient" class="testButton">Client</a>
+									<a href="/addProducteur" class="testButton">
 										Producteur</a>
 								</div>
 							</li>
@@ -52,19 +53,19 @@
 						{% if (client is defined and client is not null) or (producteur is defined and producteur is not null) %}
 
 							<li>
-								<a href="/logout"  class="testButton">Déconnexion</a>
+								<a href="/logout" class="testButton">Déconnexion</a>
 							</li>
 
 						{% endif %}
 
 						{% if client is defined and client is not null %}
-    <li>
-        <a href="/panier"  class="testButton">
-            Mon panier
-                <span class="cart-count">({{ totalQty }})</span>
-        </a>
-    </li>
-{% endif %}
+							<li>
+								<a href="/panier" class="testButton">
+									Mon panier
+									<span class="cart-count">({{ totalQty }})</span>
+								</a>
+							</li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>

@@ -1,11 +1,20 @@
 {% extends "../layouts/base.twig" %}
 
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/globals.css">
+
+{% endblock %}
+
 {% block main %}
-<div class="container">
-    <h2>Importer des produits via CSV</h2>
-    <form action="/uploadCsv" method="POST" enctype="multipart/form-data">
-        <input type="file" name="csv_file" accept=".csv" required>
-        <button type="submit">Importer</button>
-    </form>
-</div>
+<main>
+    <div class="csv-import-container">
+        <h2 class="csv-import-title">Importer des produits via CSV</h2>
+        <p class="csv-import-description">Pour des raisons techniques, le format du fichier CSV doit etre le suivant :</p>
+        <img class="csv-import-image" src="/assets/img/ExempleCSV.png" alt="Format du fichier CSV">
+        <form class="csv-import-form" action="/uploadCsv" method="POST" enctype="multipart/form-data">
+            <input class="csv-file-input" type="file" name="csv_file" accept=".csv" required>
+            <button class="csv-import-button" type="submit">Importer</button>
+        </form>
+    </div>
+</main>
 {% endblock %}

@@ -1,6 +1,6 @@
 model Producteur {
     id              Int     @id @default(autoincrement())
-    entrepriseNom   String
+    entrepriseNom   String @unique
     nom             String
     prenom          String
     email           String  @unique
@@ -11,6 +11,7 @@ model Producteur {
     siret           String @unique
     bio             String?
     stripeAccountId String? //gestion de stripe//
+    photoUrl        String? 
+    produits        Produit[]       // Relation One-to-Many avec Produit
 
-    produits Produit[] @relation("ProduitProducteur")
 }

@@ -7,7 +7,7 @@ const productRouter = require("./router/productRouter")
 const panierRouter = require("./router/panierRouter")
 const paiementRouter = require("./router/paiementRouter")
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-
+const secretKeyExpress = process.env.secretKeyExpress
 const app = express()
 
 app.use(express.json())
@@ -18,10 +18,10 @@ app.use('/uploads', express.static('uploads'));
 
 // Configuration de la session
 app.use(session({
-    secret: "kmr%2p~V3-s]RM3%#J-q6UM2=rW5yC88",
+    secret: secretKeyExpress,
     resave: true,
     saveUninitialized: true,
-    // Ajoutez éventuellement d'autres options de configuration ici
+    
 }))
 
 // Middleware pour rendre la session client disponible partout
@@ -43,6 +43,6 @@ app.use(panierRouter)
 app.use(paiementRouter)
 
 
-app.listen(3000, () => {
-    console.log("Connecté sur le port 3000")
+app.listen(4013, () => {
+    console.log("Connecté sur le port 4013")
 })

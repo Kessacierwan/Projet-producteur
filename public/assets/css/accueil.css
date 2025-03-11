@@ -51,48 +51,37 @@
 
 
 
-  .animation {
+.animation {
     height: 50px;
     overflow: hidden;
     margin-left: 1rem;
     display: inline-block;
     vertical-align: top;
-  }
-  
-  .animation > div {
+}
+
+.animation > div {
     position: relative;
-    animation: move 9s linear infinite;
-  }
-  
-  .animation > div > div {
+    animation: move 5s linear infinite; /* Animation de 5 secondes, répétée à l'infini */
+}
+
+.animation > div > div {
     height: 50px;
     line-height: 50px;
     padding: 0 0.75rem;
     box-sizing: border-box;
-  }
-  
-  @keyframes move {
-    0% { transform: translateY(0); }
-    33.33% { transform: translateY(-50px); }
-    66.66% { transform: translateY(-100px); }
-    100% { transform: translateY(-150px); }
-  }
-  
-
-
-
-@keyframes text-animation {
-  0% {margin-top: 0;}
-  10% {margin-top: 0;}
-  20% {margin-top: -5.62rem;}
-  30% {margin-top: -5.62rem;}
-  40% {margin-top: -11.24rem;}
-  60% {margin-top: -11.24rem;}
-  70% {margin-top: -5.62rem;}
-  80% {margin-top: -5.62rem;}
-  90% {margin-top: 0;}
-  100% {margin-top: 0;}
 }
+
+@keyframes move {
+    0% { transform: translateY(50px); } /* Premier mot visible */
+    25% { transform: translateY(0px); } /* Deuxième mot visible */
+    50% { transform: translateY(-50px); } /* Troisième mot visible */
+    75% { transform: translateY(-100px); } /* Premier mot visible (boucle complète) */
+    100% { transform: translateY(-150px); } /* Deuxième mot visible */
+}
+
+
+
+
 
 .divPourDisplayCarlos{
     display: flex;

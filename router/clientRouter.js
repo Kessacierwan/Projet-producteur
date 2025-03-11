@@ -58,7 +58,7 @@ clientRouter.get("/loginClient", (req,res)=>{
   
     try {
         const client = await prisma.client.create({
-            data: {
+            data: { // Création d'un nouveau client avec les données du formulaire
                 nom,
                 prenom,
                 email,

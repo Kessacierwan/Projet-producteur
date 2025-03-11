@@ -1,13 +1,13 @@
 model Client {
-    id               Int        @id @default(autoincrement())
-    nom              String
+    id               Int        @id @default(autoincrement()) // Identifiant unique du client
+    nom              String                                   // Non facultatif donc not nullable (pas de ?)
     prenom           String
-    email            String     @unique
-    motDePasse       String
+    email            String     @unique                       // Adresse email du client, UNIQUE dans la base de données pour gérer les connexions avec. 
+    motDePasse       String                                   // Haché en DataBase
     age              Int
     sexe             String
-    stripeCustomerId String?    @unique
-    isActive         Boolean    @default(false)
+    stripeCustomerId String?    @unique                      // NULLABLE car le client n'en a pas besoin pour créer un compte
+    isActive         Boolean    @default(false)              // Liée a stripe. Par défaut, le client est inactif
     
-    commandes        Commande[]
+    commandes        Commande[]                              // relation one to many avec la table commande
 }

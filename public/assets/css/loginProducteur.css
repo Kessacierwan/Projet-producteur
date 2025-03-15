@@ -42,6 +42,7 @@ footer{
     max-width: 250px; /* Largeur maximale */
     background-color: rgb(242, 253, 225);
     caret-color: rgb(0, 0, 0); /* Couleur du curseur d'écriture */
+    color: rgb(0, 0, 0); /* Couleur du texte à l'intérieur des champs */
 
 }
 
@@ -54,7 +55,7 @@ footer{
 .sendButtonLoginProducteur {
     padding: 10px; /* Espacement interne du bouton */
     background-color: #333; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte du bouton */
+    color: #000000; /* Couleur du texte du bouton */
     border: none; /* Supprime la bordure par défaut */
     border-radius: 4px; /* Coins arrondis */
     cursor: pointer; /* Curseur en main au survol */
@@ -69,8 +70,3 @@ footer{
     font-size: 0.9em; /* Taille de police plus petite */
 }
 
-.inputLoginProducteur:focus {
-    outline: none; /* Supprime le contour par défaut du navigateur */
-    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement plus clair quand sélectionné */
-    color: white; /* Garde le texte en blanc même quand sélectionné */
-}

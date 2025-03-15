@@ -157,7 +157,7 @@ text-align: center;
 
 .enjeu-overlay-text {
   color:  rgb(255, 255, 255);
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
 }
@@ -235,14 +235,15 @@ text-align: center;
 }
 
 #enjeu-overlay-text-financier{
-  font-size: 1.25em;
+  font-size: 1.75em;
 }
 
 #enjeu-overlay-text-politique{
-  font-size: 1.25em;
+  font-size: 1.75em;
 }
 #enjeu-overlay-text-politique{
-  font-size: 1.25em;
+  font-size: 1.75em;
+
 }
 
 .agriboost-title {
@@ -381,6 +382,20 @@ text-align: center;
     width: 207%;
     left: -107%;
     z-index: 2;
+  }
+  #enjeu-overlay-text-environnementaux{
+    font-size: 1.25em;
+  }
+  #enjeu-overlay-text-financier{
+    font-size: 1.25em;
+  }
+  
+  #enjeu-overlay-text-politique{
+    font-size: 1.25em;
+  }
+  #enjeu-overlay-text-sociaux{
+    font-size: 1.25em;
+  
   }
 }
 

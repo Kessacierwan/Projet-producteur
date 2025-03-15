@@ -12,13 +12,19 @@
 /* Titre de la boutique */
 .bp-boutique-header {
     font-size: 2.5em;
-    color: #222;
+    border-radius: 5px;
+    width: fit-content;
+    margin-bottom: 5px;
+    color:  #838ff8;
+    padding: 2Px;
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
+    background-color: rgba(95, 95, 95, 0.5);
     position: relative;
-    z-index: 1; 
+    z-index: 1;
+    background-size: contain; /* ou auto */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    backdrop-filter: blur(5px); /* Applique un flou de 8px */
+
 }
 
 /* Liste des produits */
@@ -36,6 +42,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border: 2px solid rgb(0, 0, 0);
     transition: transform 0.3s ease, border 0.3s ease;
+    backdrop-filter: blur(3px); /* Applique un flou de 8px */
+
 }
 .bp-product-item.added-to-cart {
     border: 2px solid #4CAF50; /* Vert pour indiquer le succès */

@@ -20,14 +20,14 @@
             <form action="/loginProducteur" method="post" class="formLoginProducteur">
                 <div>
                     <label for="email" class="labelLoginProducteur">Votre mail</label><br>
-                    <input type="email" class="inputLoginProducteur" name="email" style="color: white;">
+                    <input type="email" class="inputLoginProducteur" name="email" >
                     {% if error %}
                     <div class="error">{{ error.email }}</div>
                     {% endif %}
                 </div>
                 <div>
                     <label for="motDePasse" class="labelLoginProducteur">Votre mot de passe</label><br>
-                    <input type="password" class="inputLoginProducteur" name="motDePasse" style="color: white;">
+                    <input type="password" class="inputLoginProducteur" name="motDePasse" >
                     {% if error %}
                     <div class="error">{{ error.motDePasse }}</div>
                     {% endif %}

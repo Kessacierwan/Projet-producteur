@@ -52,7 +52,7 @@
     color:  #838ff8;
     box-shadow: 0 0 1em var(--glow-color),
     0 0 4em 2em var(--glow-spread-color),
-    isnet 0 0 0.75em 0.25em var(--glow-spread-color);
+    inset 0 0 0.75em 0.25em var(--glow-spread-color);
     cursor: pointer;
   }
   
@@ -74,8 +74,8 @@
   
 
   ::selection {
-    background-color: #ffe6007f; /* Couleur de fond bleue */
-    color: #ffe60078; /* Couleur du texte en blanc */
+    background-color: rgb(0, 0, 0); /* Couleur de fond bleue */
+    color: #ffffff; /* Couleur du texte en blanc */
   }
   
 

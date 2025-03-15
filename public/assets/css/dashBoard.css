@@ -359,5 +359,7 @@ select option {
 
 
 #divPourAppenchild{
-width: 100px;
-margin: auto;}
+width: calc(33% - 20px);
+margin: auto;
+padding:15px;
+}

@@ -37,47 +37,6 @@ producteurRouter.get("/loginProducteur", (req,res)=>{
         bio
     } = req.body;
 
-    // Définition des regex
-    const entrepriseNomRegex = /^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$/;
-    const nomRegex = /^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$/;
-    const prenomRegex = /^[A-Za-zÀ-ÿ0-9,&\.\:\-#\?\/!\(\)']+$/;
-    const emailRegex = /^[A-Za-zÀ-ÿ0-9,&\.\@\:\-#\?\/!\(\)']+$/;
-    const motDePasseRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*\-_²]).{8,}$/;
-    const ageRegex = /^[0-9]{1,2}$/;
-    const siretRegex = /^\d{14}$/; // SIRET doit contenir exactement 14 chiffres
-
-    const errors = [];
-
-    // Validation des champs
-    if (!entrepriseNomRegex.test(entrepriseNom)) {
-        errors.push("Le format du nom de l'entreprise est invalide.");
-    }
-    if (!nomRegex.test(nom)) {
-        errors.push("Le format du nom est invalide.");
-    }
-    if (!prenomRegex.test(prenom)) {
-        errors.push("Le format du prénom est invalide.");
-    }
-    if (!emailRegex.test(email)) {
-        errors.push("Le format de l'email est invalide.");
-    }
-    if (!motDePasseRegex.test(motDePasse)) {
-        errors.push("Le mot de passe ne respecte pas les critères de sécurité.");
-    }
-    if (motDePasse !== confirm_motDePasse) {
-        errors.push("Les mots de passe ne correspondent pas.");
-    }
-    if (!ageRegex.test(age)) {
-        errors.push("L'âge doit être un nombre entre 1 et 99.");
-    }
-    if (!siretRegex.test(siret)) {
-        errors.push("Le numéro SIRET doit contenir exactement 14 chiffres.");
-    }
-
-    // Si des erreurs sont présentes, afficher la vue avec les erreurs
-    if (errors.length > 0) {
-        return res.render("pages/addProducteur.twig", { errors });
-    }
 
     try {
         const photoUrl = req.file ? `/uploads/${req.file.filename}` : null;
@@ -100,8 +59,8 @@ producteurRouter.get("/loginProducteur", (req,res)=>{
 
         res.redirect("/");
     } catch (error) {
-        errors.push(errors);
-        res.render("pages/addProducteur.twig", { errors : errors });
+        console.log(error)
+        res.render("pages/addProducteur.twig");
     }
 });
 

@@ -67,10 +67,11 @@ clientRouter.get("/loginClient", (req,res)=>{
                 sexe
             }
         });
+        
         res.redirect("/");
     } catch (error) {
-        console.error(error);
-        res.render("pages/addClient.twig", { errors: ["Une erreur est survenue lors de l'inscription."] });
+        errors.push(errors);
+        res.render("pages/addClient.twig", { errors: errors });
     }
 });
 

@@ -1,9 +1,7 @@
 const panierRouter = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const authguard = require("../services/authguard");
-const prisma = new PrismaClient({
-    log: ['query'],
-  });
+const prisma = new PrismaClient();
 async function calculerMontantTotal(clientId) {
     try {
         const resultat = await prisma.commande.aggregate({

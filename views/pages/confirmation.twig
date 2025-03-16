@@ -5,10 +5,20 @@
 {% endblock %}
 
 {% block style %}
+    		<link rel="stylesheet" href="/assets/css/globals.css">
 
 {% endblock %}
-<h2> page de confirmation du paiement </h2>
 {% block main %}
-<h2>Page de confirmation de paiement. </h2>
-<a href=""> Obtenir une facture </a>
+<h1>Confirmation de commande</h1>
+<p>Merci pour votre commande ! Voici les détails :</p>
+
+<ul>
+    {% for produit in produitsDansCommande %}
+        <li>
+            <strong>{{ produit.produit.nom }}</strong> - Quantité : {{ produit.quantite }} - Prix unitaire : {{ produit.produit.prix }} € - Total : {{ produit.total }} €
+        </li>
+    {% endfor %}
+</ul>
+
+<p><strong>Total de la commande : {{ totalCommande }} €</strong></p>
 {% endblock %}

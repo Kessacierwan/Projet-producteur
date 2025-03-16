@@ -106,7 +106,6 @@ paiementRouter.get("/confirmation", authguard, (req, res) => {
 });
 
 
-
 paiementRouter.post('/api/create-stripe-account', authguard, async (req, res) => {
     try {
         const producteur = req.session.producteur.id;
@@ -142,6 +141,8 @@ paiementRouter.post('/api/create-stripe-account', authguard, async (req, res) =>
         res.status(500).json({ error: 'Erreur lors de la création du compte Stripe' });
     }
 });
+
+
 
 
 module.exports = paiementRouter;
